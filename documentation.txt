@@ -1,0 +1,45 @@
+General
+
+The implementation for this project is using python, so the general command format is:
+
+    python auth.py "command" "additional arguments seperated by spaces and quotes"
+
+Command templates
+
+python auth.py AddUser user userPassword
+    userMaker function checks for existance of a file("users.json") and makes it if the file doesnt exist.
+    addUser loads the json data present updates the lists with new input and dumps it back into the users file.
+
+python auth.py Authenticate user userPassword
+    Checks if a user is present, and if present in the "users.json" file compares the passwords from arg input to stored
+
+python auth.py SetDomain user domain
+    domainMaker function checks for existance of a file("domains.json") and makes it if the file doesnt exist.
+    setDomain loads the json data an adds the required data in lists
+
+python auth.py DomainInfo domain
+    lists all the values in the list for that domain, if domain not present in domains.json it prints nothing
+
+python auth.py SetType object type
+    typeMaker function checks for existance of a file("types.json") and makes it if the file doesnt exist.
+
+python auth.py TypeInfo type
+    lists all the values in the list for that type, if domain not present in domains.json it prints nothing
+
+python auth.py AddAccess
+    accessMaker function checks for existance of a file("access.json") and makes it if the file doesnt exist.
+    creates the domain and type if the entered type an domain doesnt already exist in the domains and types json files.
+
+python auth.py CanAccess
+    follows the provided algorithm to look for a matching case, otherwise fails and returns access denied.
+    for d in domains(user)
+        for t in types(object)
+            if access[d][t] contains operation
+                return true
+    return false
+
+Testing Conducted
+
+I implemented a basic shell script that tests the code with a bunch of preset arguments to verify basic functionallity
+
+The correctOutput.txt contains the expected output for the shell script.
